@@ -1,9 +1,9 @@
 package apsd.interfaces.containers.base;
 
-// import apsd.classes.utilities.Natural;
+import apsd.classes.utilities.Natural;
 
 /** Interface: Container, la base di tutti i contenitori. */
-public interface Container<T> {
+public interface Container<T extends Container<T>> {
   // T must have a recursive bound.
 
   /* ************************************************************************ */
@@ -11,7 +11,13 @@ public interface Container<T> {
   /* ************************************************************************ */
 
   // Empty
+    T Empty();
   // Size
+    Natural Size();
   // IsEmpty
+    default boolean IsEmpty(){
+        if(Size().IsZero()) return true;
+        return false;
+    }
 
 }
