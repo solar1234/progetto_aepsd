@@ -12,7 +12,8 @@ public interface ForwardIterator<Data> extends Iterator<Data>{
   /* ************************************************************************ */
 
   // Next
-    default void Next(){DataNNExt();};
+    default void Next(){
+        DataNNext();};
 
     default void Next(long stp){
         while (stp>0){
@@ -30,13 +31,13 @@ public interface ForwardIterator<Data> extends Iterator<Data>{
     };
 
   // DataNNext
-    Data DataNNExt();
+    Data DataNNext();
 
   // ForEachForward
     default boolean ForEachForward(Predicate<Data> fun){
         if(fun!=null){
             while (IsValid()){
-                if (fun.Apply(DataNNExt())) return true;
+                if (fun.Apply(DataNNext())) return true;
             }
         }
         return false;

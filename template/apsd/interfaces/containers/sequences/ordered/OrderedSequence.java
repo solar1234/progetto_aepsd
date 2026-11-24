@@ -24,7 +24,7 @@ public interface OrderedSequence<T extends OrderedSequence<T, Data>, Data extend
         Data pred = null;
         Natural predPos = null;
         for (long idx = 0L; itr.IsValid(); idx++) {
-            Data cur = itr.DataNNExt();
+            Data cur = itr.DataNNext();
             if (cur != null && cur.compareTo(dat) < 0 && (pred == null || cur.compareTo(pred) >= 0)) {
                 pred = cur;
                 predPos = Natural.Of(idx);
@@ -42,7 +42,7 @@ public interface OrderedSequence<T extends OrderedSequence<T, Data>, Data extend
         Data succ = null;
         Natural succPos = null;
         for (long idx = 0L; itr.IsValid(); idx++) {
-            Data cur = itr.DataNNExt();
+            Data cur = itr.DataNNext();
             if (cur != null && cur.compareTo(dat) > 0 && (succ == null || cur.compareTo(succ) < 0)) {
                 succ = cur;
                 succPos = Natural.Of(idx);
